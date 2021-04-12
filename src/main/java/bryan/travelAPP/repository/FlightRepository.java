@@ -1,4 +1,7 @@
 package bryan.travelAPP.repository;
 
-public interface FlightRepository {
+import bryan.travelAPP.domain.Flight;
+import org.springframework.data.repository.CrudRepository;
+
+public interface FlightRepository extends CrudRepository<Flight, Long> {
 }
