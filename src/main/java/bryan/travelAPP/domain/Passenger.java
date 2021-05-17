@@ -9,27 +9,31 @@ public class Passenger {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
+    // dni unico y no nulo
     private String idNumber;
+    // no nulo
     private String name;
+    // no nulo
     private int age;
     private String email;
+    // no puede ser nulo y solo puede tener dos valores, F/M
     private String gender;
 
-//    /** Relacion uno a uno con asiento{Seat}*/
-//    @OneToOne(mappedBy = "Passenger")
-//    private Seat seat;
+    /**
+     * Relacion de un pasajero con un asiento
+     */
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "seat_id")
+    private Seat seat;
 
-    /** Relacion muchos a uno de vuelo{Flight} a pasajero{Passenger}*/
-    @ManyToOne
-    private Flight flight;
-
-    /** constructor vacio y con atributos**/
+    /**
+     * CONSTRUCTORES
+     */
     public Passenger() {
     }
 
     public Passenger(String idNumber, String name, int age, String email, String gender) {
-        this.id = id;
         this.idNumber = idNumber;
         this.name = name;
         this.age = age;
@@ -37,12 +41,14 @@ public class Passenger {
         this.gender = gender;
     }
 
-    /** getters y setters **/
-    public Long getId() {
+    /**
+     * GETTERS & SETTERS
+     */
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -86,17 +92,12 @@ public class Passenger {
         this.gender = gender;
     }
 
-    @Override
-    public String toString() {
-        return "Passenger{" +
-                "id=" + id +
-                ", idNumber='" + idNumber + '\'' +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", email='" + email + '\'' +
-                ", gender='" + gender + '\'' +
-//                ", seat=" + seat +
-                ", flight=" + flight +
-                '}';
+    public Seat getSeat() {
+        return seat;
     }
+
+    public void setSeat(Seat seat) {
+        this.seat = seat;
+    }
+
 }

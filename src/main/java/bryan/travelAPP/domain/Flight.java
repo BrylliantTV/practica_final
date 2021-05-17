@@ -15,7 +15,11 @@ public class Flight {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
+    // 2 LETRAS + 4 NUMEROS Y ES UNICO, EJEMPLO : IB7340
+    /**
+     * NINGUNO DE ESTOS VALORES PUEDE SER NULO A LA HORA DE AÑADIR UN VUELO
+     */
     private String flightNumber;
     private Date departureDate;
     private Date arrivalDate;
@@ -24,21 +28,40 @@ public class Flight {
     private int duration;
     private double price;
 
-    /** Relacion muchos a uno de vuelo{Fligh} a aerolinea{Airline}*/
+    /**
+     * aeropuerto de origen
+     */
     @ManyToOne
+    @JoinColumn(name = "aiport_id")
+    private Airport airport_Arrival;
+
+    /**
+     * aeropuerto de destino
+     */
+    @ManyToOne
+    @JoinColumn(name = "aiport_id")
+    private Airport airport_Departure;
+    /**
+     * Relacion muchos a uno de vuelo{Flight} a aerolinea{Airline}
+     */
+    @ManyToOne
+    @JoinColumn(name = "airline_id")
     private Airline airline;
 
-    /** Relacion uno a muchos de Flight{Flight} a Pasajeros{Passenger}*/
+    /**
+     * Relacion uno a muchos de Flight{Flight} a Pasajeros{Passenger}
+     */
     @OneToMany()
-    @JoinColumn(name = "Pasenger_id")
+    @JoinColumn(name = "Passenger_id")
     private Set<Passenger> passengerSet = new HashSet<>();
 
-    /** constructor vacio y con atributos**/
+    /**
+     * CONSTRUCTORES
+     */
     public Flight() {
     }
 
     public Flight(String flightNumber, Date departureDate, Date arrivalDate, Time departureTime, Time arrivalTime, int duration, double price, Airline airline) {
-        this.id = id;
         this.flightNumber = flightNumber;
         this.departureDate = departureDate;
         this.arrivalDate = arrivalDate;
@@ -49,12 +72,14 @@ public class Flight {
         this.airline = airline;
     }
 
-    /** getters y setters **/
-    public Long getId() {
+    /**
+     * GETTERS & SETTERS
+     **/
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -114,19 +139,35 @@ public class Flight {
         this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return "Flight{" +
-                "id=" + id +
-                ", flightNumber='" + flightNumber + '\'' +
-                ", departureDate=" + departureDate +
-                ", arrivalDate=" + arrivalDate +
-                ", departureTime=" + departureTime +
-                ", arrivalTime=" + arrivalTime +
-                ", duration=" + duration +
-                ", price=" + price +
-                ", airline=" + airline +
-                ", passengerSet=" + passengerSet +
-                '}';
+    public Airline getAirline() {
+        return airline;
+    }
+
+    public void setAirline(Airline airline) {
+        this.airline = airline;
+    }
+
+    public Set<Passenger> getPassengerSet() {
+        return passengerSet;
+    }
+
+    public void setPassengerSet(Set<Passenger> passengerSet) {
+        this.passengerSet = passengerSet;
+    }
+
+    public Airport getAirport_Arrival() {
+        return airport_Arrival;
+    }
+
+    public void setAirport_Arrival(Airport airport_Arrival) {
+        this.airport_Arrival = airport_Arrival;
+    }
+
+    public Airport getAirport_Departure() {
+        return airport_Departure;
+    }
+
+    public void setAirport_Departure(Airport airport_Departure) {
+        this.airport_Departure = airport_Departure;
     }
 }

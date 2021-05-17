@@ -13,15 +13,18 @@ public class Airline {
     // en el diagrama no se ve que tiene un id, pero luego en un archivo con valores para introducir de prueba, tiene id autoincrementable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
+    // nombre UNICO
     private String name;
 
-    /** Relacion uno a muchos de aerolinea{Airline} a vuelo{Flight}*/
+    /** Relacion - Una aerolinea{Airline} tiene muchos vuelos(Flight)*/
     @OneToMany()
     @JoinColumn(name = "Flight_id")
     private Set<Flight> flightSet = new HashSet<>();
 
-    /** constructor vacio  y con sus atributos**/
+    /**
+     * CONSTRUCTORES
+     */
     public Airline() {
     }
 
@@ -30,17 +33,18 @@ public class Airline {
     }
 
     public Airline(String name, Set<Flight> flightSet) {
-        this.id = id;
         this.name = name;
         this.flightSet = flightSet;
     }
 
-    /** getters y setters **/
-    public Long getId() {
+    /**
+     * GETTERS & SETTERS
+     */
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -52,12 +56,12 @@ public class Airline {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Airline{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", flightSet=" + flightSet +
-                '}';
+    public Set<Flight> getFlightSet() {
+        return flightSet;
     }
+
+    public void setFlightSet(Set<Flight> flightSet) {
+        this.flightSet = flightSet;
+    }
+
 }

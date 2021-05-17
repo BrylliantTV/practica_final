@@ -1,6 +1,7 @@
 package bryan.travelAPP.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Airport {
@@ -10,29 +11,49 @@ public class Airport {
      * - Tiene muchos vuelos de entrada (arrivalDate) destination
      * los vuelos tiene una fecha y una hora de llegada y una fecha y una hora de salida
      */
-    // en el diagrama no se ve que tiene un id, pero luego en un archivo con valores para introducir de prueba, tiene id autoincrementable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
+    // ESTE CODIGO A DE SER UNICO "ALC" de alicante
     private String code;
+    // EL NOMBRE NO PUEDE SER NULO
     private String name;
 
-    /** constructor vacio y con atributos**/
+    /**
+     * Relacion uno a muchos (un aeropuerto) (muchos vuelos)
+     * se hace la lista de que un aeropuerto tiene muchos vuelos de llegada
+     */
+    @OneToMany()
+    @JoinColumn(name = "flight_id")
+    List<Flight> flight_arrival;
+
+    /**
+     * Relacion uno a muchos (un aeropuerto) (muchos vuelos)
+     * se hace la lista de que un aeropuerto tiene muchos vuelos de salida
+     */
+    @OneToMany()
+    @JoinColumn(name = "flight_id")
+    List<Flight> flight_departure;
+
+    /**
+     * constructor vacio y con atributos
+     **/
     public Airport() {
     }
 
     public Airport(String code, String name) {
-        this.id = id;
         this.code = code;
         this.name = name;
     }
 
-    /** getters y setters **/
-    public Long getId() {
+    /**
+     * getters y setters
+     **/
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -52,12 +73,20 @@ public class Airport {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Airport{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+    public List<Flight> getFlight_arrival() {
+        return flight_arrival;
     }
+
+    public void setFlight_arrival(List<Flight> flight_arrival) {
+        this.flight_arrival = flight_arrival;
+    }
+
+    public List<Flight> getFlight_departure() {
+        return flight_departure;
+    }
+
+    public void setFlight_departure(List<Flight> flight_departure) {
+        this.flight_departure = flight_departure;
+    }
+
 }
