@@ -24,5 +24,4 @@ public class AirlineController {
         model.addAttribute("airlines", airlineRepository.findAll());
         return "airline/listAirline";
     }
-
 }

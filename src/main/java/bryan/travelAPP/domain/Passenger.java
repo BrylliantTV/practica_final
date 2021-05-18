@@ -18,7 +18,7 @@ public class Passenger {
     private int age;
     private String email;
     // no puede ser nulo y solo puede tener dos valores, F/M
-//    private String gender;
+//    private char gender;
 //    private enum Gender {
 //        MALE, FEMALE
 //    }
@@ -36,8 +36,7 @@ public class Passenger {
     public Passenger() {
     }
 
-    public Passenger(Integer id, String idNumber, String name, int age, String email) {
-        this.id = id;
+    public Passenger(String idNumber, String name, int age, String email) {
         this.idNumber = idNumber;
         this.name = name;
         this.age = age;

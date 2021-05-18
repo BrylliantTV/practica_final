@@ -76,3 +76,4 @@ insert into Flight (id, FLIGHT_NUMBER, DEPARTURE_DATE, ARRIVAL_DATE, DEPARTURE_T
 insert into Flight (id, FLIGHT_NUMBER, DEPARTURE_DATE, ARRIVAL_DATE, DEPARTURE_TIME, ARRIVAL_TIME, DURATION, PRICE) values (2, 'FC2543', '2021-06-02 07:06:21', '2021-02-08 16:21:49', '19:17', '5:35', 176, 634.20);
 --PASAJEROS
 --NO HAY JEJE
+insert into Passenger (id, ID_NUMBER, name, age, email) values (1, '29528428Q', 'bryan', 21, 'bryandf.1996@gmail.com');

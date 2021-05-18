@@ -16,6 +16,6 @@ public class FlightController {
     @RequestMapping("/view/flights")
     public String getFlights(Model model) {
         model.addAttribute("flights", flightRepository.findAll());
-        return "flight/listFlights";
+        return "flight/listFlight";
     }
 }
