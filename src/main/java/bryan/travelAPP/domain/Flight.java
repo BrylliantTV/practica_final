@@ -32,14 +32,14 @@ public class Flight {
      * aeropuerto de origen
      */
     @ManyToOne
-    @JoinColumn(name = "aiport_id")
+    @JoinColumn(name = "aiport_arrival_id")
     private Airport airport_Arrival;
 
     /**
      * aeropuerto de destino
      */
     @ManyToOne
-    @JoinColumn(name = "aiport_id")
+    @JoinColumn(name = "aiport_departure_id")
     private Airport airport_Departure;
     /**
      * Relacion muchos a uno de vuelo{Flight} a aerolinea{Airline}
@@ -61,7 +61,7 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(String flightNumber, Date departureDate, Date arrivalDate, Time departureTime, Time arrivalTime, int duration, double price, Airline airline) {
+    public Flight(String flightNumber, Date departureDate, Date arrivalDate, Time departureTime, Time arrivalTime, int duration, double price) {
         this.flightNumber = flightNumber;
         this.departureDate = departureDate;
         this.arrivalDate = arrivalDate;
@@ -69,7 +69,6 @@ public class Flight {
         this.arrivalTime = arrivalTime;
         this.duration = duration;
         this.price = price;
-        this.airline = airline;
     }
 
     /**

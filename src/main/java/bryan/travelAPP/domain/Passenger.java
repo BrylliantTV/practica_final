@@ -18,7 +18,10 @@ public class Passenger {
     private int age;
     private String email;
     // no puede ser nulo y solo puede tener dos valores, F/M
-    private String gender;
+//    private String gender;
+//    private enum Gender {
+//        MALE, FEMALE
+//    }
 
     /**
      * Relacion de un pasajero con un asiento
@@ -33,12 +36,12 @@ public class Passenger {
     public Passenger() {
     }
 
-    public Passenger(String idNumber, String name, int age, String email, String gender) {
+    public Passenger(Integer id, String idNumber, String name, int age, String email) {
+        this.id = id;
         this.idNumber = idNumber;
         this.name = name;
         this.age = age;
         this.email = email;
-        this.gender = gender;
     }
 
     /**
@@ -84,13 +87,13 @@ public class Passenger {
         this.email = email;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+//    public String getGender() {
+//        return gender;
+//    }
+//
+//    public void setGender(String gender) {
+//        this.gender = gender;
+//    }
 
     public Seat getSeat() {
         return seat;

@@ -7,23 +7,25 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
-    <title>Airlines</title>
+    <title>Airport</title>
 </head>
 <body>
 <center>
-    <h1>Lista de Aerolineas</h1>
+    <h1>Lista de Aeropuertos</h1>
 </center>
 <table class="table table-striped">
     <thead>
     <tr>
         <th>Id</th>
+        <th>code</th>
         <th>nameAirline</th>
 
     </tr>
     </thead>
-    <tr th:each="airline : ${airlines}">
-        <td th:text="${airline.id}"></td>
-        <td th:text="${airline.name}"></td>
+    <tr th:each="airport : ${airports}">
+        <td th:text="${airport.id}"></td>
+        <td th:text="${airport.code}"></td>
+        <td th:text="${airport.name}"></td>
     </tr>
 </table>
 </body>

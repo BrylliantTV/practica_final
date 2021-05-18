@@ -1,0 +1,78 @@
+--AEROLINEAS
+insert into Airline (id, name) values (1, 'Ryanair');
+insert into Airline (id, name) values (2, 'Vueling');
+insert into Airline (id, name) values (3, 'KLM');
+insert into Airline (id, name) values (4, 'Iberia');
+insert into Airline (id, name) values (5, 'Qatar Airways');
+insert into Airline (id, name) values (6, 'Air Canada');
+insert into Airline (id, name) values (7, 'Emirates');
+insert into Airline (id, name) values (8, 'TAP Portugal');
+insert into Airline (id, name) values (9, 'AirEuropa');
+insert into Airline (id, name) values (10, 'EasyJet');
+--AEROPUERTOS
+insert into Airport (id, code, name) values (1, 'ALC', 'El Altet Airport');
+insert into Airport (id, code, name) values (2, 'BCN', 'El Prat Airport');
+insert into Airport (id, code, name) values (3, 'MAD', 'Barajar Airport');
+insert into Airport (id, code, name) values (4, 'IBZ', 'Ibiza Airport');
+insert into Airport (id, code, name) values (5, 'AGP', 'Malaga Airport');
+insert into Airport (id, code, name) values (6, 'LHR', 'Heathrow Airport');
+insert into Airport (id, code, name) values (7, 'CDG', 'Charles de Gaulle Airport');
+insert into Airport (id, code, name) values (8, 'AMS', 'Amsterdam Airport');
+insert into Airport (id, code, name) values (9, 'FRA', 'Frankfurt Airport');
+insert into Airport (id, code, name) values (10, 'SIN', 'Singapore Changi Airport');
+insert into Airport (id, code, name) values (11, 'SFO', 'San Francisco International Airport');
+insert into Airport (id, code, name) values (12, 'YYZ', 'Toronto Pearson Airport');
+insert into Airport (id, code, name) values (13, 'MEX', 'Benito Suarez International Airport');
+insert into Airport (id, code, name) values (14, 'LGW', 'London Gatwick Airport');
+insert into Airport (id, code, name) values (15, 'HND', 'Tokyo Haneda Airport');
+insert into Airport (id, code, name) values (16, 'DXB', 'Dubai International Airport');
+insert into Airport (id, code, name) values (17, 'BRU', 'Brussels Airport');
+insert into Airport (id, code, name) values (18, 'SOF', 'Sofia Airport');
+insert into Airport (id, code, name) values (19, 'ORY', 'Paris Orly Airport');
+insert into Airport (id, code, name) values (20, 'BER', 'Berlin Brandenburg Airport');
+insert into Airport (id, code, name) values (21, 'MUC', 'Munich Airport');
+insert into Airport (id, code, name) values (22, 'BUD', 'Budapest Airport');
+insert into Airport (id, code, name) values (23, 'DUB', 'Dublin Airport');
+insert into Airport (id, code, name) values (24, 'NAP', 'Naples Airport');
+insert into Airport (id, code, name) values (25, 'VCE', 'Venice Airport');
+insert into Airport (id, code, name) values (26, 'MLA', 'Malta Airport');
+insert into Airport (id, code, name) values (27, 'LIS', 'Lisbos Airport');
+insert into Airport (id, code, name) values (28, 'OPO', 'Porto Airport');
+insert into Airport (id, code, name) values (29, 'ZRH', 'Zurich Airport');
+insert into Airport (id, code, name) values (30, 'IST', 'Istanbul Airport');
+--ASIENTOS
+insert into Seat (id, number, aisle) values (1, 'C72 ', 1);
+insert into Seat (id, number, aisle) values (2, 'B22 ', 2);
+insert into Seat (id, number, aisle) values (3, 'A32 ', 3);
+insert into Seat (id, number, aisle) values (4, 'B82 ', 4);
+insert into Seat (id, number, aisle) values (5, 'B22 ', 5);
+insert into Seat (id, number, aisle) values (6, 'B52 ', 6);
+insert into Seat (id, number, aisle) values (7, 'C02 ', 7);
+insert into Seat (id, number, aisle) values (8, 'C52 ', 8);
+insert into Seat (id, number, aisle) values (9, 'C32 ', 9);
+insert into Seat (id, number, aisle) values (10, 'B22 ', 10);
+insert into Seat (id, number, aisle) values (11, 'C02 ', 11);
+insert into Seat (id, number, aisle) values (12, 'B22 ', 12);
+insert into Seat (id, number, aisle) values (13, 'C72 ', 13);
+insert into Seat (id, number, aisle) values (14, 'C82 ', 14);
+insert into Seat (id, number, aisle) values (15, 'A92 ', 15);
+insert into Seat (id, number, aisle) values (16, 'A72 ', 16);
+insert into Seat (id, number, aisle) values (17, 'B32 ', 17);
+insert into Seat (id, number, aisle) values (18, 'C92 ', 18);
+insert into Seat (id, number, aisle) values (19, 'C42 ', 19);
+insert into Seat (id, number, aisle) values (20, 'C72 ', 20);
+insert into Seat (id, number, aisle) values (21, 'A22 ', 21);
+insert into Seat (id, number, aisle) values (22, 'C72 ', 22);
+insert into Seat (id, number, aisle) values (23, 'C02 ', 23);
+insert into Seat (id, number, aisle) values (24, 'B42 ', 24);
+insert into Seat (id, number, aisle) values (25, 'C22 ', 25);
+insert into Seat (id, number, aisle) values (26, 'C92 ', 26);
+insert into Seat (id, number, aisle) values (27, 'B52 ', 27);
+insert into Seat (id, number, aisle) values (28, 'A72 ', 28);
+insert into Seat (id, number, aisle) values (29, 'A92 ', 29);
+insert into Seat (id, number, aisle) values (30, 'A22 ', 30);
+--VUELOS
+insert into Flight (id, FLIGHT_NUMBER, DEPARTURE_DATE, ARRIVAL_DATE, DEPARTURE_TIME, ARRIVAL_TIME, DURATION, PRICE) values (1, 'SV4586', '2021-10-02 15:58:53', '2021-01-29 10:41:00', '21:35', '12:40', 41, 648.85);
+insert into Flight (id, FLIGHT_NUMBER, DEPARTURE_DATE, ARRIVAL_DATE, DEPARTURE_TIME, ARRIVAL_TIME, DURATION, PRICE) values (2, 'FC2543', '2021-06-02 07:06:21', '2021-02-08 16:21:49', '19:17', '5:35', 176, 634.20);
+--PASAJEROS
+--NO HAY JEJE
