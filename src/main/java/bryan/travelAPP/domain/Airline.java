@@ -1,6 +1,8 @@
 package bryan.travelAPP.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,17 +12,17 @@ public class Airline {
     /**
      * Una aerolinea tiene muchos vuelos (flights)
      */
-    // en el diagrama no se ve que tiene un id, pero luego en un archivo con valores para introducir de prueba, tiene id autoincrementable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    // nombre UNICO
+    @Column(unique = true, nullable = false)
     private String name;
 
     /** Relacion - Una aerolinea{Airline} tiene muchos vuelos(Flight)*/
     @OneToMany()
-    @JoinColumn(name = "Flight_id")
-    private Set<Flight> flightSet = new HashSet<>();
+    @JoinColumn(name = "Airline_id")
+    @JsonIgnore
+    private Set<Flight> flightsSet = new HashSet<>();
 
     /**
      * CONSTRUCTORES
@@ -32,9 +34,9 @@ public class Airline {
         this.name = name;
     }
 
-    public Airline(String name, Set<Flight> flightSet) {
+    public Airline(String name, Set<Flight> flightsSet) {
         this.name = name;
-        this.flightSet = flightSet;
+        this.flightsSet = flightsSet;
     }
 
     /**
@@ -56,12 +58,12 @@ public class Airline {
         this.name = name;
     }
 
-    public Set<Flight> getFlightSet() {
-        return flightSet;
+    public Set<Flight> getFlightsSet() {
+        return flightsSet;
     }
 
-    public void setFlightSet(Set<Flight> flightSet) {
-        this.flightSet = flightSet;
+    public void setFlightsSet(Set<Flight> flightsSet) {
+        this.flightsSet = flightsSet;
     }
 
 }

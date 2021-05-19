@@ -10,15 +10,9 @@ public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    // unico y no null
+    @Column(unique = true, nullable = false)
     private String number;
-    // pasillo opcional
     private int aisle;
-
-//    /** Relacion uno a uno con pasajero{Passenger}*/
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "passenger_id", referencedColumnName = "id")
-//    private Passenger passenger;
 
     /** constructor vacio y con atributos**/
     public Seat() {

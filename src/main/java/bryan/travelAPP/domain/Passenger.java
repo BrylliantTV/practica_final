@@ -10,18 +10,15 @@ public class Passenger {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    // dni unico y no nulo
+    @Column(unique = true, nullable = false)
     private String idNumber;
-    // no nulo
+    @Column(nullable = false)
     private String name;
-    // no nulo
+    @Column(nullable = false)
     private int age;
     private String email;
-    // no puede ser nulo y solo puede tener dos valores, F/M
-//    private char gender;
-//    private enum Gender {
-//        MALE, FEMALE
-//    }
+    @Column(nullable = false)
+    private String gender;
 
     /**
      * Relacion de un pasajero con un asiento
@@ -35,8 +32,8 @@ public class Passenger {
      */
     public Passenger() {
     }
-
-    public Passenger(String idNumber, String name, int age, String email) {
+    public Passenger(String idNumber, String name, int age, String email, String gender) {
+        this.gender = gender;
         this.idNumber = idNumber;
         this.name = name;
         this.age = age;
@@ -86,7 +83,15 @@ public class Passenger {
         this.email = email;
     }
 
-//    public String getGender() {
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    //    public String getGender() {
 //        return gender;
 //    }
 //

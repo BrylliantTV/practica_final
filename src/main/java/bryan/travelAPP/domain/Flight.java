@@ -1,5 +1,7 @@
 package bryan.travelAPP.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Time;
 import java.util.Date;
@@ -20,6 +22,7 @@ public class Flight {
     /**
      * NINGUNO DE ESTOS VALORES PUEDE SER NULO A LA HORA DE AÑADIR UN VUELO
      */
+    @Column(unique = true)
     private String flightNumber;
     private Date departureDate;
     private Date arrivalDate;
@@ -32,14 +35,14 @@ public class Flight {
      * aeropuerto de origen
      */
     @ManyToOne
-    @JoinColumn(name = "aiport_arrival_id")
+    @JoinColumn(name = "airport_arrival_id")
     private Airport airport_Arrival;
 
     /**
      * aeropuerto de destino
      */
     @ManyToOne
-    @JoinColumn(name = "aiport_departure_id")
+    @JoinColumn(name = "airport_departure_id")
     private Airport airport_Departure;
     /**
      * Relacion muchos a uno de vuelo{Flight} a aerolinea{Airline}
@@ -52,7 +55,7 @@ public class Flight {
      * Relacion uno a muchos de Flight{Flight} a Pasajeros{Passenger}
      */
     @OneToMany()
-    @JoinColumn(name = "Passenger_id")
+    @JoinColumn(name = "Flight_id", referencedColumnName = "id")
     private Set<Passenger> passengerSet = new HashSet<>();
 
     /**

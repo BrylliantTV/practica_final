@@ -1,5 +1,7 @@
 package bryan.travelAPP.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,26 +16,26 @@ public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    // ESTE CODIGO A DE SER UNICO "ALC" de alicante
+    @Column(unique = true, nullable = false)
     private String code;
-    // EL NOMBRE NO PUEDE SER NULO
+    @Column(nullable = false)
     private String name;
 
     /**
      * Relacion uno a muchos (un aeropuerto) (muchos vuelos)
      * se hace la lista de que un aeropuerto tiene muchos vuelos de llegada
      */
-    @OneToMany()
-    @JoinColumn(name = "flight_id")
-    List<Flight> flight_arrival;
+    @OneToMany(mappedBy = "airport_Arrival")
+    @JsonIgnore
+    List<Flight> flights_arrival;
 
     /**
      * Relacion uno a muchos (un aeropuerto) (muchos vuelos)
      * se hace la lista de que un aeropuerto tiene muchos vuelos de salida
      */
-    @OneToMany()
-    @JoinColumn(name = "flight_id")
-    List<Flight> flight_departure;
+    @OneToMany(mappedBy = "airport_Departure")
+    @JsonIgnore
+    List<Flight> flights_departure;
 
     /**
      * constructor vacio y con atributos
@@ -73,20 +75,20 @@ public class Airport {
         this.name = name;
     }
 
-    public List<Flight> getFlight_arrival() {
-        return flight_arrival;
+    public List<Flight> getFlights_arrival() {
+        return flights_arrival;
     }
 
-    public void setFlight_arrival(List<Flight> flight_arrival) {
-        this.flight_arrival = flight_arrival;
+    public void setFlights_arrival(List<Flight> flights_arrival) {
+        this.flights_arrival = flights_arrival;
     }
 
-    public List<Flight> getFlight_departure() {
-        return flight_departure;
+    public List<Flight> getFlights_departure() {
+        return flights_departure;
     }
 
-    public void setFlight_departure(List<Flight> flight_departure) {
-        this.flight_departure = flight_departure;
+    public void setFlights_departure(List<Flight> flights_departure) {
+        this.flights_departure = flights_departure;
     }
 
 }

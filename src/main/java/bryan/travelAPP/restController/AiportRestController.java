@@ -1,8 +1,10 @@
 package bryan.travelAPP.restController;
 
+import bryan.travelAPP.domain.Airline;
 import bryan.travelAPP.domain.Airport;
 import bryan.travelAPP.repository.AirportRepository;
 import bryan.travelAPP.restController.exception.AirportNotFoundException;
+import com.querydsl.jpa.impl.JPAQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,9 +33,17 @@ public class AiportRestController {
         return airports;
     }
 
-    @PostMapping("/aiport/createAirport")
+    @PostMapping("/airport/createAirport")
     public Airport newAirport(@RequestBody Airport newAirport) {
         Airport airport = airportRepository.save(newAirport);
         return airportRepository.save(newAirport);
     }
+
+    //TODO
+    @GetMapping("/aiports/{airline}")
+    public List<Airport> airportsListFlights(@PathVariable Airline airline) {
+
+        return null;
+    }
+
 }

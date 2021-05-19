@@ -1,13 +1,12 @@
 package bryan.travelAPP.restController;
 
-import bryan.travelAPP.domain.Airline;
 import bryan.travelAPP.domain.Passenger;
 import bryan.travelAPP.repository.PassengerRepository;
 import bryan.travelAPP.restController.exception.PassengerNotFoundException;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,9 +26,33 @@ public class PassengerRestController {
         }
         return passengers;
     }
+
     @PostMapping("/passenger/createpassengers")
     public Passenger newPassenger(@RequestBody Passenger newPassenger) {
         Passenger passenger = passengerRepository.save(newPassenger);
         return passengerRepository.save(newPassenger);
+    }
+
+    @PostMapping("/passenger/createpassengersList")
+    public List<Passenger> newPassengerList(@RequestBody List<Passenger> passengersList) {
+        return (List<Passenger>) passengerRepository.saveAll(passengersList);
+//        for (int i = 0; i < passengersList.size(); i++) {
+//            Passenger newPassenger1 = passengersList.get(i);
+//            passengerRepository.save(newPassenger1);
+//        }
+    }
+
+    @GetMapping("/passenger/page")
+    public Page<Passenger> findAll(@RequestParam("page") int page, @RequestParam("size") int size) {
+        Page<Passenger> passengers = passengerRepository.findAll(PageRequest.of(page, size));
+        if (passengers.getTotalPages() < page) {
+            throw new PassengerNotFoundException("No hay ningún valor en la página: " + page);
+        }
+        return passengers;
+    }
+    @GetMapping("/passenger/passengerOrderList")
+    public List<Passenger> sortPassengers() {
+        List<Passenger> passengers = passengerRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        return passengers;
     }
 }
