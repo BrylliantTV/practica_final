@@ -36,12 +36,9 @@ public class PassengerRestController {
     @PostMapping("/passenger/createpassengersList")
     public List<Passenger> newPassengerList(@RequestBody List<Passenger> passengersList) {
         return (List<Passenger>) passengerRepository.saveAll(passengersList);
-//        for (int i = 0; i < passengersList.size(); i++) {
-//            Passenger newPassenger1 = passengersList.get(i);
-//            passengerRepository.save(newPassenger1);
-//        }
     }
 
+    //EJEMPLO PARA PROBAR http://localhost:8080/passenger/page?page=1&size=15
     @GetMapping("/passenger/page")
     public Page<Passenger> findAll(@RequestParam("page") int page, @RequestParam("size") int size) {
         Page<Passenger> passengers = passengerRepository.findAll(PageRequest.of(page, size));

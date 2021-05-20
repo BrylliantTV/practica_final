@@ -91,14 +91,6 @@ public class Passenger {
         this.gender = gender;
     }
 
-    //    public String getGender() {
-//        return gender;
-//    }
-//
-//    public void setGender(String gender) {
-//        this.gender = gender;
-//    }
-
     public Seat getSeat() {
         return seat;
     }
@@ -106,5 +98,6 @@ public class Passenger {
     public void setSeat(Seat seat) {
         this.seat = seat;
     }
+
 
 }
