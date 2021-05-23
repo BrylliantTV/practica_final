@@ -1,6 +1,7 @@
 package bryan.travelAPP.restController;
 
 import bryan.travelAPP.domain.Passenger;
+import bryan.travelAPP.domain.Seat;
 import bryan.travelAPP.repository.PassengerRepository;
 import bryan.travelAPP.restController.exception.PassengerNotFoundException;
 import org.springframework.data.domain.Page;
@@ -52,4 +53,8 @@ public class PassengerRestController {
         List<Passenger> passengers = passengerRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
         return passengers;
     }
+//    @GetMapping("/flights/occupation/{flightNumber}")
+//    public int sizeSeatFlightNumber(@PathVariable String flightNumber){
+//
+//    }
 }

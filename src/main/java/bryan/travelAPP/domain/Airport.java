@@ -7,12 +7,6 @@ import java.util.List;
 
 @Entity
 public class Airport {
-    /**
-     * Un aeropuerto tiene muchos vuelos (flights)
-     * - tiene muchos vuelos de salida (departureDate) origen
-     * - Tiene muchos vuelos de entrada (arrivalDate) destination
-     * los vuelos tiene una fecha y una hora de llegada y una fecha y una hora de salida
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

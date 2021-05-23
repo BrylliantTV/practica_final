@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,17 +19,19 @@ public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    // 2 LETRAS + 4 NUMEROS Y ES UNICO, EJEMPLO : IB7340
-    /**
-     * NINGUNO DE ESTOS VALORES PUEDE SER NULO A LA HORA DE AÑADIR UN VUELO
-     */
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String flightNumber;
+    @Column(nullable = false)
     private Date departureDate;
+    @Column(nullable = false)
     private Date arrivalDate;
+    @Column(nullable = false)
     private Time departureTime;
+    @Column(nullable = false)
     private Time arrivalTime;
+    @Column(nullable = false)
     private int duration;
+    @Column(nullable = false)
     private double price;
 
     /**

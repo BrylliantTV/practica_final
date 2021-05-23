@@ -12,7 +12,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 @RestController
-public class AiportRestController {
+public class AirportRestController {
 
     private final AirportRepository airportRepository;
 
@@ -20,7 +20,7 @@ public class AiportRestController {
     private EntityManager em;
 
     //Inyección de dependecia del servicio
-    public AiportRestController(AirportRepository airportRepository) {
+    public AirportRestController(AirportRepository airportRepository) {
         this.airportRepository = airportRepository;
     }
 
@@ -39,11 +39,13 @@ public class AiportRestController {
         return airportRepository.save(newAirport);
     }
 
-    //TODO
-    @GetMapping("/aiports/{airline}")
-    public List<Airport> airportsListFlights(@PathVariable Airline airline) {
-
-        return null;
+    @GetMapping("/airport/aiports/{name}")
+    public List<Airport> listAirportsFlights(@PathVariable String name) {
+        List<Airport> airports = airportRepository.findByNameContaining(name);
+        if (airports.isEmpty()) {
+            throw  new AirportNotFoundException("No se han encontrado aeropuertos con el nombre: " + name);
+        }
+        return airports;
     }
 
 }
